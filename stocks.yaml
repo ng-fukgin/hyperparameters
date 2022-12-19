@@ -2,8 +2,8 @@ download: # 下载股票数据集
   base_data_path: quotes # 基础数据集存放路径（开盘价，收盘价......）
   base_data_path_pro: quotes_ok  # 基础数据集处理后存放路径（将None转为-9999）
   extended_dataset_path: peTTM    # 扩展数据集存放路径（市盈率，市净率......）
-  SHA_name: sz.csv # 上证指数文件名
-  SZSE_name: sh.csv # 深证成指文件名
+  SHA_name: sh.csv # 上证指数文件名
+  SZSE_name: sz.csv # 深证成指文件名
   today_wangyi: wangyi.csv # 网易今日所有股票数据集文件名
   today_sina: sina.csv # 新浪今日所有股票数据集文件名
   mat_all: StockQFQ.mat  # 股票数据集 mat 文件最终命名
@@ -75,4 +75,3 @@ inference: # 推理
   num_proc_bsearch: 10
 
 # Path: data.yaml
-  
