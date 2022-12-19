@@ -1,0 +1,78 @@
+download: # 下载股票数据集
+  base_data_path: quotes # 基础数据集存放路径（开盘价，收盘价......）
+  base_data_path_pro: quotes_ok  # 基础数据集处理后存放路径（将None转为-9999）
+  extended_dataset_path: peTTM    # 扩展数据集存放路径（市盈率，市净率......）
+  SHA_name: sz.csv # 上证指数文件名
+  SZSE_name: sh.csv # 深证成指文件名
+  today_wangyi: wangyi.csv # 网易今日所有股票数据集文件名
+  today_sina: sina.csv # 新浪今日所有股票数据集文件名
+  mat_all: StockQFQ.mat  # 股票数据集 mat 文件最终命名
+  mat_update: StockQFQ_update.mat # 股票数据集 mat 文件临时命名
+
+
+
+conversion: # 转换数据集
+  num_conv_layers: 2
+  num_rnn_layers: 3
+  rnn_layer_size: 1024
+  use_gru: True 
+  share_rnn_weights: False
+  blank_id: 0
+  ctc_grad_norm_type: instance 
+
+training: # 训练
+  batch_size: 128
+  num_epochs: 100
+  start_epoch: 0
+  end_epoch: 80
+  learning_rate: 0.0001
+  lr_decay: 0.5
+  lr_decay_epoch: 10
+  lr_decay_start_epoch: 20
+  lr_decay_patience: 3
+  lr_decay_min: 0.00001
+  lr_decay_state: 0
+  lr_decay_factor: 0.5
+  lr_decay_patience: 3
+  
+
+
+testing: # 测试
+  batch_size: 128
+  error_rate_type: cer 
+  decoding_method: ctc_beam_search
+  lang_model_path: data/lm/zh_giga.no_cna_cmn.prune01244.klm
+  alpha: 1.9
+  beta: 5.0
+  beam_size: 300
+  cutoff_prob: 0.99
+  cutoff_top_n: 40
+  num_proc_bsearch: 10
+
+
+decoding: # 解码
+  batch_size: 128
+  error_rate_type: cer 
+  decoding_method: ctc_beam_search
+  lang_model_path: data/lm/zh_giga.no_cna_cmn.prune01244.klm
+  alpha: 1.9
+  beta: 5.0
+  beam_size: 300
+  cutoff_prob: 0.99
+  cutoff_top_n: 40
+  num_proc_bsearch: 10
+
+inference: # 推理
+  batch_size: 128
+  error_rate_type: cer 
+  decoding_method: ctc_beam_search
+  lang_model_path: data/lm/zh_giga.no_cna_cmn.prune01244.klm
+  alpha: 1.9
+  beta: 5.0
+  beam_size: 300
+  cutoff_prob: 0.99
+  cutoff_top_n: 40
+  num_proc_bsearch: 10
+
+# Path: data.yaml
+  
